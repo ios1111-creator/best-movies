@@ -11,6 +11,8 @@ export class HttpService{
   }
   getMovies(): Observable<Movie[]>{
     return this.httpClient.get<Movie[]>('http://localhost:3000/movies')
-
+  }
+  getCategories():Observable<Movie[]>{
+    return this.httpClient.get<Movie[]>('http://localhost:3000/categories')
   }
 }
