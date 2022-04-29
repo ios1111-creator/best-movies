@@ -1,10 +1,17 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {MoviesComponent} from "./pages/movies/movies.component";
+import {PageNotFoundComponent} from './pages/page-not-found/page-not-found.component';
+import {CategoriesComponent} from './pages/categories/categories.component';
+import {MovieDetailsComponent} from './pages/movies/movie-details/movie-details.component';
 
-const routes:Routes=[
-  {path:'movies', component:MoviesComponent}
+const routes: Routes = [
+  {path: '', redirectTo: '/movies', pathMatch: 'full'},
+  {path: 'movies', component: MoviesComponent},
+  {path: 'movie/:id', component: MovieDetailsComponent},
+  {path: 'categories', component: CategoriesComponent},
+  {path: '**', component: PageNotFoundComponent}
 ]
 
 @NgModule({
@@ -13,8 +20,9 @@ const routes:Routes=[
     CommonModule,
     RouterModule.forRoot(routes)
   ],
-  exports:[
+  exports: [
     RouterModule
   ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

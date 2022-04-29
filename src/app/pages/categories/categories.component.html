@@ -1,1 +1,5 @@
-<p>categories works!</p>
+<div class="grid">
+  <a href="" *ngFor="let category of categories | async">
+    {{category}}
+  </a>
+</div>
