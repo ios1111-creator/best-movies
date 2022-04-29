@@ -1,1 +1,4 @@
-<p>movies works!</p>
+<div class="movies">
+  <app-movie-cover *ngFor="let movie of movies | async" [movie]="movie">
+  </app-movie-cover>
+</div>
