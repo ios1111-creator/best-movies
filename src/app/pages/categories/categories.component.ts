@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {HttpService} from "../../services/http.service";
-import {Observable} from "rxjs";
-import { Movie } from 'src/app/models/movie';
+import {Component, OnInit} from '@angular/core';
+import {HttpService} from '../../services/http.service';
+import {Observable} from 'rxjs';
+import {Movie} from 'src/app/models/movie';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-categories',
@@ -9,11 +10,14 @@ import { Movie } from 'src/app/models/movie';
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnInit {
-categories:Observable<Movie[]>
-  constructor(private http:HttpService) { }
+  categories: Observable<Movie[]>;
+
+  constructor(private http: HttpService,
+              private router: Router) {
+  }
 
   ngOnInit(): void {
-this.categories=this.http.getCategories()
+    this.categories = this.http.getCategories();
   }
 
 }
