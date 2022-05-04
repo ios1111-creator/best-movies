@@ -1,25 +1,4 @@
-*{
-  box-sizing: border-box;
-}
-img {
-  width: 234px;
-  height: 348px;
-}
-
-.grid__item {
-  max-width: 234px;
-  padding: 0 5px;
-}
-
-.card-content {
-  min-height: 180px;
-}
-
-.card-title {
-  width: 100%;
-}
-
-.black-text:hover {
-  font-weight: bold;
-  cursor: pointer;
+.details{
+  align-items: flex-start;
+  display: flex;
 }
