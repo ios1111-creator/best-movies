@@ -19,7 +19,6 @@ export class MoviesInCategoryComponent implements OnInit {
   ngOnInit(): void {
     const category = this.route.snapshot.paramMap.get('category')
     this.movies = this.http.getMoviesFromCategory(category)
-    console.log(this.movies = this.http.getMoviesFromCategory(category))
   }
 
 }
