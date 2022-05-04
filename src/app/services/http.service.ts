@@ -25,7 +25,17 @@ export class HttpService {
 
   getMoviesFromCategory(category: string): Observable<Movie[]> {
     return this.getMovies().pipe(
-      map(movies=>movies.filter(movie=>movie.category===category))
+      map(movies => movies.filter(movie => movie.category === category))
     );
+  }
+
+  getYears():Observable<string[]> {
+    return this.httpClient.get<string[]>('http://localhost:3000/years');
+  }
+
+  getMoviesFromYears(year: string) {
+    return this.getMovies().pipe(
+      map(movies => movies.filter(movie => movie.year === year))
+    )
   }
 }
