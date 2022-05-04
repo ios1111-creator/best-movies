@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
-import {Movie} from '../../../models/movie';
-import {HttpService} from '../../../services/http.service';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {switchMap} from 'rxjs/operators';
+import {Observable} from "rxjs";
+import {Movie} from "../../../models/movie";
+import {HttpService} from 'src/app/services/http.service';
+import {ActivatedRoute, Router} from "@angular/router";
+import {switchMap} from "rxjs/operators";
 
 @Component({
   selector: 'app-movie-details',
@@ -13,19 +13,18 @@ import {switchMap} from 'rxjs/operators';
 export class MovieDetailsComponent implements OnInit {
   movieDetails: Observable<Movie[]>;
 
-  constructor(private httpS: HttpService,
+  constructor(private http: HttpService,
               private route: ActivatedRoute,
               private router: Router) {
   }
 
   ngOnInit(): void {
     this.movieDetails = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) => this.httpS.getMovie(params.get('id')))
-    );
+      switchMap((params) => this.http.getMovie(params.get('id')))
+    )
   }
 
-  getToMovies() {
+  back() {
     this.router.navigate(['/movies']);
-    console.log(this.router);
   }
 }
