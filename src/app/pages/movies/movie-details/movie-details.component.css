@@ -2,3 +2,7 @@
   align-items: flex-start;
   display: flex;
 }
+img {
+  height: 348px;
+  width: 234px;
+}

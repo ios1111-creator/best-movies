@@ -25,7 +25,7 @@ import { SortPipe } from './pipe/sort.pipe';
     MoviesInCategoryComponent,
     YearsComponent,
     MovieInYearsComponent,
-    SortPipe
+    SortPipe,
   ],
   imports: [
     BrowserModule,

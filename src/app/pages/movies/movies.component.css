@@ -1,7 +1,0 @@
-.movies {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-items: start;
-  justify-content: center;
-}
