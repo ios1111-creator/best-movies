@@ -16,8 +16,6 @@ export class MoviesComponent implements OnInit {
 
   ngOnInit(): void {
     this.movies = this.http.getMovies();
-    console.log(this.movies);
-
   }
 
 }

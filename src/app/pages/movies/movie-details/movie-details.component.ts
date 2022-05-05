@@ -4,6 +4,7 @@ import {Movie} from "../../../models/movie";
 import {HttpService} from 'src/app/services/http.service';
 import {ActivatedRoute, Router} from "@angular/router";
 import {switchMap} from "rxjs/operators";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-movie-details',
@@ -15,7 +16,8 @@ export class MovieDetailsComponent implements OnInit {
 
   constructor(private http: HttpService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private location:Location) {
   }
 
   ngOnInit(): void {
@@ -25,6 +27,7 @@ export class MovieDetailsComponent implements OnInit {
   }
 
   back() {
-    this.router.navigate(['/movies']);
+    // this.router.navigate(['/movies']);
+    this.location.back();
   }
 }

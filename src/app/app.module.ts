@@ -10,6 +10,9 @@ import {AppRoutingModule} from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import { MovieDetailsComponent } from './pages/movies/movie-details/movie-details.component';
 import { MoviesInCategoryComponent } from './pages/categories/movies-in-category/movies-in-category.component';
+import { YearsComponent } from './pages/years/years.component';
+import { MovieInYearsComponent } from './pages/years/movie-in-years/movie-in-years.component';
+import { SortPipe } from './pipe/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { MoviesInCategoryComponent } from './pages/categories/movies-in-category
     MoviesComponent,
     PageNotFoundComponent,
     MovieDetailsComponent,
-    MoviesInCategoryComponent
+    MoviesInCategoryComponent,
+    YearsComponent,
+    MovieInYearsComponent,
+    SortPipe,
   ],
   imports: [
     BrowserModule,

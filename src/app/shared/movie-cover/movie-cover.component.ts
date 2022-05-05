@@ -8,7 +8,8 @@ import {Movie} from "../../models/movie";
 })
 export class MovieCoverComponent implements OnInit {
 @Input() movie:Movie;
-  constructor() { }
+  toastHTML = '<span>I am toast content</span><button class="btn-flat toast-action">Undo</button>';
+constructor() { }
 
   ngOnInit(): void {
   }
