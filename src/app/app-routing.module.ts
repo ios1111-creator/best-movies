@@ -8,6 +8,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {MoviesInCategoryComponent} from './pages/categories/movies-in-category/movies-in-category.component';
 import {YearsComponent} from "./pages/years/years.component";
 import {MovieInYearsComponent} from "./pages/years/movie-in-years/movie-in-years.component";
+import {AddMovieComponent} from "./pages/add-movie/add-movie.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/movies', pathMatch: 'full'},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'category/:category', component: MoviesInCategoryComponent},
   {path:'years', component:YearsComponent},
   {path:'year/:year',component:MovieInYearsComponent},
+  {path:'add_movie', component:AddMovieComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

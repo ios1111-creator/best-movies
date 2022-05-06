@@ -13,6 +13,8 @@ import { MoviesInCategoryComponent } from './pages/categories/movies-in-category
 import { YearsComponent } from './pages/years/years.component';
 import { MovieInYearsComponent } from './pages/years/movie-in-years/movie-in-years.component';
 import { SortPipe } from './pipe/sort.pipe';
+import { AddMovieComponent } from './pages/add-movie/add-movie.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -26,11 +28,13 @@ import { SortPipe } from './pipe/sort.pipe';
     YearsComponent,
     MovieInYearsComponent,
     SortPipe,
+    AddMovieComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

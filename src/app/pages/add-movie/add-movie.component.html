@@ -1,0 +1,63 @@
+<form action="" #movie="ngForm" class="row" (ngSubmit)="addMovie()">
+  <div class="input-field col s6">
+    <input type="text" class="validate" [(ngModel)]="title" name="title" required>
+    <label>Title</label>
+  </div>
+  <div class="input-field col s6">
+    <label>Year</label>
+    <select class="browser-default"
+            [(ngModel)]="year"
+            name="year"
+            required>
+      <option
+        *ngFor="let year of years"
+        [ngValue]="year"
+      >{{year}}</option>
+    </select>
+
+  </div>
+  <div class="input-field col s6">
+    <label>Country</label>
+    <select
+      class="browser-default"
+      [(ngModel)]="country"
+      name="country"
+      required>
+      <option
+        *ngFor="let category of categories"
+        [ngValue]="category"
+      >{{category}}
+      </option>
+    </select>
+
+
+  </div>
+  <div class="input-field col s6">
+    <input type="text" class="validate" [(ngModel)]="director" name="director" required>
+    <label>Director</label>
+  </div>
+  <div class="input-field col s6">
+    <input type="text" class="validate" [(ngModel)]="category" name="category" required>
+    <label>Category</label>
+  </div>
+  <div class="input-field col s6">
+    <input type="text" class="validate" [(ngModel)]="plot" name="plot" required>
+    <label>Plot</label>
+  </div>
+  <div class="input-field col s6">
+    <input type="text" class="validate" [(ngModel)]="poster" name="poster" required>
+    <label>Poster</label>
+  </div>
+  <div class="input-field col s6">
+    <input type="text" class="validate" [(ngModel)]="imdbRating" name="imdbRating" required>
+    <label>Imdb Rating</label>
+  </div>
+
+  <button
+    class="btn waves-effect waves-light light-green right"
+    type="submit"
+    onclick="M.toast({html:'Added Movie'})"
+    [disabled]="movie.invalid"
+  >Send
+  </button>
+</form>

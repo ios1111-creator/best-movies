@@ -7,9 +7,10 @@ import {Movie} from "../../models/movie";
   styleUrls: ['./movie-cover.component.css']
 })
 export class MovieCoverComponent implements OnInit {
-@Input() movie:Movie;
-  toastHTML = '<span>I am toast content</span><button class="btn-flat toast-action">Undo</button>';
-constructor() { }
+  @Input() movie: Movie;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
