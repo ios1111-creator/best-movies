@@ -26,10 +26,10 @@ export class HttpService {
   getMoviesFromCategory(category: string): Observable<Movie[]> {
     return this.getMovies().pipe(
       map(movies => movies.filter(movie => movie.category === category))
-   ).pipe(tap(console.log));
+    ).pipe(tap(console.log));
   }
 
-  getYears():Observable<string[]> {
+  getYears(): Observable<string[]> {
     return this.httpClient.get<string[]>('http://localhost:3000/years');
   }
 
@@ -38,10 +38,17 @@ export class HttpService {
       map(movies => movies.filter(movie => movie.year === year))
     )
   }
-  addMovie(movie:Movie):Observable<Movie>{
-    return this.httpClient.post<Movie>('http://localhost:3000/movies',movie)
+
+  addMovie(movie: Movie): Observable<Movie> {
+    return this.httpClient.post<Movie>('http://localhost:3000/movies', movie)
   }
-  editMovie(movie:Partial<Movie>):Observable<Movie>{
-    return this.httpClient.put<Movie>('http://localhost:3000/movies'+ movie.id,movie).pipe(tap(console.log))
+
+  editMovie(movie: Partial<Movie>): Observable<Movie> {
+    return this.httpClient.patch<Movie>('http://localhost:3000/movies/' + movie.id, movie).pipe(tap(console.log));
+  }
+ad
+
+  deleteMovie(id: any): Observable<Movie[]> {
+    return this.httpClient.delete<Movie[]>('http://localhost:3000/movies/' + id).pipe(tap(console.log));
   }
 }
