@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Movie} from '../models/movie';
-import {map} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +15,8 @@ export class HttpService {
     return this.httpClient.get<Movie[]>('http://localhost:3000/movies');
   }
 
-  getCategories(): Observable<Movie[]> {
-    return this.httpClient.get<Movie[]>('http://localhost:3000/categories');
+  getCategories(): Observable<string[]> {
+    return this.httpClient.get<string[]>('http://localhost:3000/categories');
   }
 
   getMovie(id: string): Observable<Movie[]> {
@@ -26,7 +26,7 @@ export class HttpService {
   getMoviesFromCategory(category: string): Observable<Movie[]> {
     return this.getMovies().pipe(
       map(movies => movies.filter(movie => movie.category === category))
-    );
+   ).pipe(tap(console.log));
   }
 
   getYears():Observable<string[]> {
@@ -37,5 +37,11 @@ export class HttpService {
     return this.getMovies().pipe(
       map(movies => movies.filter(movie => movie.year === year))
     )
+  }
+  addMovie(movie:Movie):Observable<Movie>{
+    return this.httpClient.post<Movie>('http://localhost:3000/movies',movie)
+  }
+  editMovie(movie:Partial<Movie>):Observable<Movie>{
+    return this.httpClient.put<Movie>('http://localhost:3000/movies'+ movie.id,movie).pipe(tap(console.log))
   }
 }

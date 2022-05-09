@@ -17,17 +17,19 @@ export class MovieDetailsComponent implements OnInit {
   constructor(private http: HttpService,
               private route: ActivatedRoute,
               private router: Router,
-              private location:Location) {
+              private location: Location) {
   }
 
   ngOnInit(): void {
     this.movieDetails = this.route.paramMap.pipe(
       switchMap((params) => this.http.getMovie(params.get('id')))
     )
+    console.log(this.route)
   }
 
   back() {
     // this.router.navigate(['/movies']);
     this.location.back();
   }
+
 }
