@@ -16,9 +16,9 @@ const routes: Routes = [
   {path: 'movie/:id', component: MovieDetailsComponent},
   {path: 'categories', component: CategoriesComponent},
   {path: 'category/:category', component: MoviesInCategoryComponent},
-  {path:'years', component:YearsComponent},
-  {path:'year/:year',component:MovieInYearsComponent},
-  {path:'add_movie', component:AddMovieComponent},
+  {path: 'years', component: YearsComponent},
+  {path: 'year/:year', component: MovieInYearsComponent},
+  {path: 'add_movie', component: AddMovieComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

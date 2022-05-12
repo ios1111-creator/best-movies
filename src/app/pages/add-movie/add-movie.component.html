@@ -1,60 +1,164 @@
 <form action="" #movie="ngForm" class="row" (ngSubmit)="addMovie()">
-  <div class="addMovie">
-    <div class="input-field col s6 div1">
-      <input type="text" class="validate" [(ngModel)]="title" name="title" required>
-      <label>Title</label>
+  <div class="error">
+    <p class="errorMessage" *ngIf="errorMessage">{{errorMessage}}</p>
+  </div>
+
+  <div>
+    <div class="row">
+      <div class="input-field col s8">
+        <input
+          type="text"
+          class="validate"
+          [(ngModel)]="title"
+          name="title"
+          required
+          minlength="2"
+          id="title"
+          #titleI="ngModel"
+          (input)="printM(titleI)">
+        <label>Title</label>
+        <ng-container *ngIf="titleI.invalid && titleI.touched">
+          <div class="card-panel red darken-1 alert" *ngIf="titleI.errors.required">
+            Field required
+          </div>
+          <div class="card-panel red darken-1 alert" *ngIf="titleI.errors.minlength">
+            Text is to short
+          </div>
+        </ng-container>
+      </div>
     </div>
-    <div class="input-field col s6 div2">
-      <label>Year</label>
-      <select class="browser-default"
-              [(ngModel)]="year"
-              name="year"
-              required>
-        <option
-          *ngFor="let year of years"
-          [ngValue]="year"
-        >{{year}}</option>
-      </select>
+    <div class="row">
+      <div class="input-field col s8">
+
+        <select class="browser-default"
+                [(ngModel)]="year"
+                name="year"
+                required
+                #yearM="ngModel">
+          <option
+            *ngFor="let year of years"
+            [ngValue]="year"
+          >{{year}}</option>
+        </select>
+        <ng-container *ngIf="yearM.invalid && yearM.touched">
+          <div class="card-panel red darken-1 alert" *ngIf="yearM.errors.required">
+            Field required
+          </div>
+        </ng-container>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="input-field col s8">
+
+        <select
+          class="browser-default"
+          [(ngModel)]="country"
+          name="country"
+          required
+          #categoryM="ngModel">
+          <option
+            *ngFor="let category of categories"
+            [ngValue]="category"
+          >{{category}}
+          </option>
+        </select>
+        <ng-container *ngIf="categoryM.invalid && categoryM.touched">
+          <div class="card-panel red darken-1 alert" *ngIf="categoryM.errors.required">
+            Field required
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s8">
+        <input
+          type="text"
+          class="validate"
+          [(ngModel)]="director"
+          name="director"
+          required
+          #directorM="ngModel">
+        <label>Director</label>
+        <ng-container *ngIf="directorM.invalid && directorM.touched">
+          <div class="card-panel red darken-1 alert" *ngIf="directorM.errors.required">Field required</div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s8">
+        <input
+          type="text"
+          class="validate"
+          [(ngModel)]="plot"
+          name="plot"
+          required
+          minlength="10"
+          #plotM="ngModel">
+        <label>Plot</label>
+        <ng-container *ngIf="plotM.invalid && plotM.touched">
+          <div class="card-panel red darken-1 alert" *ngIf="plotM.errors.required">
+            Field required
+          </div>
+          <div class="card-panel red darken-1 alert" *ngIf="plotM.errors.minlength">
+            Text is to short
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s8">
+        <input
+          placeholder="https://example.com"
+          type="url"
+          class="validate"
+          [(ngModel)]="poster"
+          name="poster"
+          required
+
+          [ngModelOptions]="{ updateOn: 'blur' }"
+          #posterM="ngModel"
+          pattern="[-a-zA-Z0-9@:%_+.~#?&//=]{2,256}(.[a-z]{2,4})?\b(/[-a-zA-Z0-9@:%_+.~#?&//=]*)?">
+        <label>Poster =>html...</label>
+        <ng-container *ngIf="posterM.invalid && posterM.touched">
+          <div class="card-panel red darken-1 alert" *ngIf="posterM.errors.required">
+            Field required
+          </div>
+          <div class="card-panel red darken-1 alert" *ngIf="posterM.errors.pattern">
+            Please provide valid url
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s8">
+        <input
+          type="number"
+          class="validate"
+          [(ngModel)]="imdbRating"
+          name="imdbRating"
+          required
+          #imdbRatingM="ngModel">
+        <label>Imdb Rating</label>
+        <ng-container *ngIf="imdbRatingM.invalid && imdbRatingM.touched">
+          <div class="card-panel red darken-1 alert" *ngIf="imdbRatingM.errors.required">
+            Field required
+          </div>
+        </ng-container>
+      </div>
     </div>
 
-    <div class="input-field col s6 div3">
-      <label>Category</label>
-      <select
-        class="browser-default"
-        [(ngModel)]="country"
-        name="country"
-        required>
-        <option
-          *ngFor="let category of categories"
-          [ngValue]="category"
-        >{{category}}
-        </option>
-      </select>
 
+    <div class="buttons">
+      <button
+        class="btn waves-effect waves-light light-green  button"
+        type="submit"
+        onclick="M.toast({html:'Added Movie'})"
+      >Send
+      </button>
+      <button class="btn red" type="reset">Reset</button>
     </div>
-    <div class="input-field col s6 div4">
-      <input type="text" class="validate" [(ngModel)]="director" name="director" required>
-      <label>Director</label>
-    </div>
-    <div class="input-field col s6 div5">
-      <input type="text" class="validate" [(ngModel)]="plot" name="plot" required>
-      <label>Plot</label>
-    </div>
-    <div class="input-field col s6 div6">
-      <input type="text" class="validate" [(ngModel)]="poster" name="poster" required>
-      <label>Poster =>html...</label>
-    </div>
-    <div class="input-field col s6 div7">
-      <input type="text" class="validate" [(ngModel)]="imdbRating" name="imdbRating" required>
-      <label>Imdb Rating</label>
-    </div>
-    <button
-      class="btn waves-effect waves-light light-green right button"
-      type="submit"
-      onclick="M.toast({html:'Added Movie'})"
-      [disabled]="movie.invalid"
-    >Send
-    </button>
+
   </div>
 
 </form>

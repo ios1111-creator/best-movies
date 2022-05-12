@@ -11,14 +11,15 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class MoviesInCategoryComponent implements OnInit {
   movies: Observable<Movie[]>;
+  isLoading = false;
 
   constructor(private http: HttpService,
               private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    const category = this.route.snapshot.paramMap.get('category')
-    this.movies = this.http.getMoviesFromCategory(category)
+    const category = this.route.snapshot.paramMap.get('category');
+    this.movies = this.http.getMoviesFromCategory(category);
   }
 
 }

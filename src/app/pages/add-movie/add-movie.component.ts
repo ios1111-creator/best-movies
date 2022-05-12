@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpService} from "../../services/http.service";
 import {Movie} from "../../models/movie";
+import {NgModel} from "@angular/forms";
 
 @Component({
   selector: 'app-add-movie',
@@ -8,23 +9,24 @@ import {Movie} from "../../models/movie";
   styleUrls: ['./add-movie.component.css']
 })
 export class AddMovieComponent implements OnInit {
+  model: Partial<Movie> = {};
   categories: string[] = [];
-  years: string[] = []
-  title: string = ''
-  year: string = ''
-  country: string = ''
-  director: string = ''
-  category: string = ''
-  plot: string = ''
-  poster: string = ''
-  imdbRating: string = ''
+  years: string[] = [];
+  title: string = '';
+  year: string = '';
+  country: string = '';
+  director: string = '';
+  category: string = '';
+  plot: string = '';
+  poster: string = '';
+  imdbRating: string = '';
+  errorMessage: string;
 
-  constructor(private HttpService: HttpService) {
-  }
+  constructor(private httpService: HttpService) {}
 
   ngOnInit(): void {
-    this.HttpService.getCategories().subscribe(categories => this.categories = categories)
-    this.HttpService.getYears().subscribe(years => this.years = years);
+    this.httpService.getCategories().subscribe(categories => this.categories = categories);
+    this.httpService.getYears().subscribe(years => this.years = years);
   }
 
   addMovie() {
@@ -37,7 +39,16 @@ export class AddMovieComponent implements OnInit {
       plot: this.plot,
       poster: this.poster,
       imdbRating: this.imdbRating,
-    }
-    this.HttpService.addMovie(movie).subscribe()
+    };
+    this.httpService.addMovie(movie).subscribe();
+    // this.httpService.addMovie(this.model as Movie).subscribe(
+    //   // result => console.log(result),
+    //   // error => console.error(error),
+    //   {error: (err: string) => this.errorMessage = err}
+    // );
+  }
+
+  printM(titleI: NgModel) {
+    console.log(titleI);
   }
 }

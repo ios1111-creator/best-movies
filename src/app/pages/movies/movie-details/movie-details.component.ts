@@ -17,15 +17,16 @@ export class MovieDetailsComponent implements OnInit {
   editText = '';
   text: string;
   categories: string[] = [];
-  years: string[] = []
-  title: string = ''
-  year: string = ''
-  country: string = ''
-  director: string = ''
-  category: string = ''
-  plot: string = ''
-  poster: string = ''
-  imdbRating: string = ''
+  years: string[] = [];
+  title: string = '';
+  year: string = '';
+  country: string = '';
+  director: string = '';
+  category: string = '';
+  plot: string = '';
+  poster: string = '';
+  imdbRating: string = '';
+  errorMessage: string;
 
   constructor(private http: HttpService,
               private route: ActivatedRoute,
@@ -36,23 +37,19 @@ export class MovieDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.movieDetails = this.route.paramMap.pipe(
       switchMap((params) => this.http.getMovie(params.get('id')))
-    )
-    console.log(this.route)
+    );
   }
 
   back() {
-    // this.router.navigate(['/movies']);
-    this.location.back();
+    this.router.navigate(['/movies']);
+    // this.location.back();
   }
 
   deleteMovie(movie: Movie) {
-    this.http.deleteMovie(movie.id).subscribe()
-    console.log(this.movieDetails)
+    this.http.deleteMovie(movie.id).subscribe();
+    console.log(this.movieDetails);
   }
 
-  edit1(movie) {
-    this.movieDetails = movie;
-  }
   edit() {
     this.editmode = true;
     this.editText = this.text;
@@ -65,11 +62,11 @@ export class MovieDetailsComponent implements OnInit {
       year: this.year,
       category: this.category,
       plot: this.plot
-    }
+    };
 
     this.editmode = false;
     this.text = this.editText;
-    this.http.editMovie(movie).subscribe();
+    this.http.editMovie(movie).subscribe({error: (err: string) => this.errorMessage = err});
   }
 
   cancel() {
