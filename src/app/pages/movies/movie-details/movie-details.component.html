@@ -4,22 +4,37 @@
     <table>
       <tr>
         <td>Title</td>
-        <td>{{movie.title}}</td>
+        <td><input [(ngModel)]="title" *ngIf="editmode" type="text"><span *ngIf="!editmode">{{movie.title}}</span>
+        </td>
       </tr>
       <tr>
         <td>Year</td>
-        <td>{{movie.year}}</td>
+        <td><input [(ngModel)]="year" *ngIf="editmode" type="date">
+          <span *ngIf="!editmode">{{movie.year}}</span></td>
       </tr>
       <tr>
         <td>Category</td>
-        <td>{{movie.category}}</td>
+        <td><input [(ngModel)]="category" *ngIf="editmode" type="text">
+          <span *ngIf="!editmode">{{movie.category}}</span></td>
       </tr>
       <tr>
         <td>Plot</td>
-        <td>{{movie.plot}}</td>
+        <td><input [(ngModel)]="plot" *ngIf="editmode" type="text"><span *ngIf="!editmode">{{movie.plot}}</span></td>
       </tr>
-      <button class="btn black" (click)="back()">Back</button>
     </table>
+    
+    <div>
+      <button class="btn red" [routerLink]="['/movies']"
+              onclick="M.toast({html:'Delete movie'})"
+              (click)="deleteMovie(movie)"
+              *ngIf="!editmode">Delete
+      </button>
+      <button *ngIf="!editmode" (click)="edit()" class="btn blue">edit</button>
+      <button *ngIf="editmode" onclick="M.toast({html:'Edit movie'})" (click)="save(movie.id)" class="btn green">save
+      </button>
+      <button *ngIf="editmode" (click)="cancel()" class="btn red">cancel</button>
+    </div>
 
   </div>
+  <button class="btn black" (click)="back()">Back</button>
 </div>

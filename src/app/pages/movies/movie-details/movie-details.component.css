@@ -6,3 +6,10 @@ img {
   height: 348px;
   width: 234px;
 }
+button{
+  margin: 10px 5px;
+  width: 100px;
+}
+table{
+min-width: 580px;
+}
