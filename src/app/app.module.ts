@@ -14,9 +14,11 @@ import {YearsComponent} from './pages/years/years.component';
 import {MovieInYearsComponent} from './pages/years/movie-in-years/movie-in-years.component';
 import {SortPipe} from './pipe/sort.pipe';
 import {AddMovieComponent} from './pages/add-movie/add-movie.component';
-import {FormsModule} from "@angular/forms";
+import {FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {LoadingSpinnerComponent} from "./shared/loading-spinner/loading-spinner.component";
 import {InterceptorInterceptor} from "./services/interceptor.interceptor";
+import { LoginComponent } from './login/login/login.component';
+import { RegisterComponent } from './login/register/register.component';
 
 @NgModule({
   declarations: [
@@ -32,15 +34,19 @@ import {InterceptorInterceptor} from "./services/interceptor.interceptor";
     SortPipe,
     AddMovieComponent,
     LoadingSpinnerComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi: true},
+    FormBuilder
   ],
   bootstrap: [AppComponent]
 })

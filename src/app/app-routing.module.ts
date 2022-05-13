@@ -9,9 +9,14 @@ import {MoviesInCategoryComponent} from './pages/categories/movies-in-category/m
 import {YearsComponent} from "./pages/years/years.component";
 import {MovieInYearsComponent} from "./pages/years/movie-in-years/movie-in-years.component";
 import {AddMovieComponent} from "./pages/add-movie/add-movie.component";
+import {LoginComponent} from "./login/login/login.component";
+// import * as path from "path";
+import {RegisterComponent} from "./login/register/register.component";
 
 const routes: Routes = [
-  {path: '', redirectTo: '/movies', pathMatch: 'full'},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
   {path: 'movies', component: MoviesComponent},
   {path: 'movie/:id', component: MovieDetailsComponent},
   {path: 'categories', component: CategoriesComponent},

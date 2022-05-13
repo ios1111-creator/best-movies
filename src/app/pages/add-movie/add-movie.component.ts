@@ -21,7 +21,8 @@ export class AddMovieComponent implements OnInit {
   poster: string = '';
   imdbRating: string = '';
   errorMessage: string;
-
+  public maxValue: number = 10;
+  public minValue: number = 0;
   constructor(private httpService: HttpService) {}
 
   ngOnInit(): void {
@@ -50,5 +51,8 @@ export class AddMovieComponent implements OnInit {
 
   printM(titleI: NgModel) {
     console.log(titleI);
+  }
+  valueChanged(e) {
+    this.imdbRating = e.target.value;
   }
 }
