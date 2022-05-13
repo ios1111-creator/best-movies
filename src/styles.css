@@ -6,3 +6,17 @@
   justify-items: start;
   justify-content: center;
 }
+.error {
+  display: flex;
+  justify-content: center;
+}
+
+.errorMessage {
+  display: flex;
+  border: 1px solid red;
+  background-color: red;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 400px;
+}

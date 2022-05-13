@@ -10,6 +10,7 @@ import {Observable} from 'rxjs';
 export class CategoriesComponent implements OnInit {
   categories: Observable<string[]>;
 
+
   constructor(private http: HttpService) {
   }
 

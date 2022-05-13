@@ -8,6 +8,7 @@ import {Movie} from "../../models/movie";
 })
 export class MovieCoverComponent implements OnInit {
   @Input() movie: Movie;
+  imgNotFound = 'https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg';
 
   constructor() {
   }

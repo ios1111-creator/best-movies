@@ -1,4 +1,9 @@
-<div class="row" *ngIf="movieDetails |async as movie">
+
+<div class="row" *ngIf="movieDetails |async as movie" >
+  <div class="error">
+    <p class="errorMessage" *ngIf="errorMessage">{{errorMessage}}</p>
+  </div>
+
   <div class="details">
     <img [src]="movie.poster" alt="">
     <table>
@@ -22,7 +27,7 @@
         <td><input [(ngModel)]="plot" *ngIf="editmode" type="text"><span *ngIf="!editmode">{{movie.plot}}</span></td>
       </tr>
     </table>
-    
+
     <div>
       <button class="btn red" [routerLink]="['/movies']"
               onclick="M.toast({html:'Delete movie'})"
