@@ -1,5 +1,4 @@
 import {AfterContentChecked, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {SpinnerService} from "./shared/loading-spinner/spinner.service";
 
 @Component({
   selector: 'app-root',
@@ -8,9 +7,8 @@ import {SpinnerService} from "./shared/loading-spinner/spinner.service";
 })
 export class AppComponent implements OnInit, AfterContentChecked {
   title = 'best-movies';
-  abs = false;
 
-  constructor(public spinnerService: SpinnerService, private cdr: ChangeDetectorRef) {
+  constructor(private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit() {

@@ -1,0 +1,7 @@
+<app-header></app-header>
+<div class="grid">
+  <a href="" *ngFor="let category of categories | async"
+  [routerLink]="['/category',category]">
+    {{category}}
+  </a>
+</div>

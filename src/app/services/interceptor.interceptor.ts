@@ -6,8 +6,8 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {delay, finalize} from "rxjs/operators";
-import {SpinnerService} from "../shared/loading-spinner/spinner.service";
+import {delay, finalize} from 'rxjs/operators';
+import {SpinnerService} from '../shared/loading-spinner/spinner.service';
 
 
 @Injectable()

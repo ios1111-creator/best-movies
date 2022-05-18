@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
+import {Users} from '../../models/movie';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
-  @Input() isLoged = false;
+  @Input() isLogged = false;
 
   constructor(private formBuilder: FormBuilder,
               private http: HttpClient,
@@ -25,22 +26,25 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.http.get<any>('http://localhost:3000/users')
+    this.http.get<Users[]>('http://localhost:3000/users')
       .subscribe(res => {
-          const user = res.find((a: any) => {
-            return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password;
+          const user = res.find((user: Users) => {
+            // console.log(a);
+
+            return user.email === this.loginForm.value.email && user.password === this.loginForm.value.password;
           });
           if (user) {
-            this.isLoged = true;
-            alert("Login Success");
+            this.isLogged = true;
+            alert('Login Success');
             this.loginForm.reset();
-            this.router.navigate(['movies']);
+            this.router.navigate(['app/movies']);
           } else {
-            alert("User not found");
+            alert('User not found');
           }
         }, error => {
-          alert("Something went wrong")
+          alert('Something went wrong');
         }
       );
   }
+
 }

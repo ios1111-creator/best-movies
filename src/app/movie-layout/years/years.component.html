@@ -1,0 +1,7 @@
+<app-header></app-header>
+<div class="grid">
+  <a href="" *ngFor="let year of years |async | sort"
+     [routerLink]="['/app/year', year]">
+    {{year}}
+  </a>
+</div>

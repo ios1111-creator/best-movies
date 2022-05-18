@@ -1,5 +1,4 @@
 <div class="grid__item">
-
   <div class="card">
     <div class="card-image">
       <img [src]="movie.poster" alt="{{imgNotFound}}"/>>
@@ -10,7 +9,7 @@
       <p>{{movie.plot.slice(0,100)}}</p>
     </div>
     <div class="card-action">
-      <a href="" class="black-text" [routerLink]="['/movie',movie.id]" onclick="M.toast({html:'ok'})" >More </a>
+      <a href="" class="black-text" [routerLink]="['/app/movie',movie.id]" onclick="M.toast({html:'ok'})" >More </a>
 
     </div>
   </div>

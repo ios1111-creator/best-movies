@@ -1,7 +1,5 @@
-import {Component, Injectable, OnInit} from "@angular/core";
-import {Observable, Subject} from "rxjs";
-import {delay} from "rxjs/operators";
-import {SpinnerService} from "./spinner.service";
+import {Component, Injectable, OnInit} from '@angular/core';
+import {SpinnerService} from './spinner.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +10,10 @@ import {SpinnerService} from "./spinner.service";
   styleUrls: ['loading-spinner.component.css']
 })
 export class LoadingSpinnerComponent implements OnInit {
-  constructor(private spinnerService: SpinnerService) {
+  constructor(public spinnerService: SpinnerService) {
   }
 
   ngOnInit() {
-    console.log(this.spinnerService.show());
 
   }
 }

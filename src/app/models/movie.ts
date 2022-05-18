@@ -7,6 +7,12 @@ export interface Movie {
   category: string;
   plot: string;
   poster: string;
-  imdbRating: string;
+  imdbRating: number;
+}
 
+export interface Users {
+  email: string;
+  id: number;
+  name: string;
+  password: string;
 }

@@ -1,17 +1,1 @@
-<nav>
-  <div  >
-    <a href="" routerLink="/">Best Movies</a>
-    <ul class="right ">
-      <li><a href="" routerLink="/movies" routerLinkActive="active">Movies</a></li>
-      <li><a href="" routerLink="/categories" routerLinkActive="active">Categories</a></li>
-      <li><a href="" routerLink="/years" routerLinkActive="active">Years</a></li>
-      <li><a href="" routerLink="/add_movie" routerLinkActive="active">Add movie</a></li>
-      <li><a style="font-size: 18px;" href="" routerLink="/login">Logout</a></li>
-    </ul>
-  </div>
-</nav>
-<div *ngIf="spinnerService.isLoading |async "
-     style=" position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
-  <app-loading-spinner></app-loading-spinner>
-</div>
 <router-outlet></router-outlet>

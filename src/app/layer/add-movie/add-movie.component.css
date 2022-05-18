@@ -1,0 +1,19 @@
+/*button {*/
+/*  margin-left: 300px;*/
+/*  margin-top: 10px;*/
+/*  width: 100px;*/
+/*}*/
+
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.ng-invalid.ng-touched:not(form) {
+  border-bottom: 1px solid red;
+}
+.alert{
+  height: 46px;
+  text-align: center;
+  line-height: 0;
+}

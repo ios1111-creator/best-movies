@@ -1,0 +1,50 @@
+<app-header></app-header>
+<div class="row" *ngIf="movieDetails |async as movie" >
+  <div class="error">
+    <p class="errorMessage" *ngIf="errorMessage">{{errorMessage}}</p>
+  </div>
+
+  <div class="details">
+    <img [src]="movie.poster" alt="">
+    <table>
+      <tr>
+        <td>Title</td>
+        <td><input [(ngModel)]="title" *ngIf="editmode" type="text"><span *ngIf="!editmode">{{movie.title}}</span>
+        </td>
+      </tr>
+      <tr>
+        <td>Country</td>
+        <td><input [(ngModel)]="country" *ngIf="editmode" type="date">
+          <span *ngIf="!editmode">{{movie.country}}</span></td>
+      </tr>
+      <tr>
+        <td>Year</td>
+        <td><input [(ngModel)]="year" *ngIf="editmode" type="date">
+          <span *ngIf="!editmode">{{movie.year}}</span></td>
+      </tr>
+      <tr>
+        <td>Category</td>
+        <td><input [(ngModel)]="category" *ngIf="editmode" type="text">
+          <span *ngIf="!editmode">{{movie.category}}</span></td>
+      </tr>
+      <tr>
+        <td>Plot</td>
+        <td><input [(ngModel)]="plot" *ngIf="editmode" type="text"><span *ngIf="!editmode">{{movie.plot}}</span></td>
+      </tr>
+    </table>
+
+    <div>
+      <button class="btn red" [routerLink]="['/movies']"
+              onclick="M.toast({html:'Delete movie'})"
+              (click)="deleteMovie(movie)"
+              *ngIf="!editmode">Delete
+      </button>
+      <button *ngIf="!editmode" (click)="edit()" class="btn blue">edit</button>
+      <button *ngIf="editmode" onclick="M.toast({html:'Edit movie'})" (click)="save(movie.id)" class="btn green">save
+      </button>
+      <button *ngIf="editmode" (click)="cancel()" class="btn red">cancel</button>
+    </div>
+
+  </div>
+  <button class="btn black" (click)="back()">Back</button>
+</div>
