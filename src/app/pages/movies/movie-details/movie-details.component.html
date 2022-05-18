@@ -1,5 +1,4 @@
-
-<div class="row" *ngIf="movieDetails |async as movie" >
+ <div class="row" *ngIf="movieDetails |async as movie" >
   <div class="error">
     <p class="errorMessage" *ngIf="errorMessage">{{errorMessage}}</p>
   </div>
@@ -11,6 +10,11 @@
         <td>Title</td>
         <td><input [(ngModel)]="title" *ngIf="editmode" type="text"><span *ngIf="!editmode">{{movie.title}}</span>
         </td>
+      </tr>
+      <tr>
+        <td>Country</td>
+        <td><input [(ngModel)]="country" *ngIf="editmode" type="date">
+          <span *ngIf="!editmode">{{movie.country}}</span></td>
       </tr>
       <tr>
         <td>Year</td>

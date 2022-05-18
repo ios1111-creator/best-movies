@@ -1,7 +1,5 @@
-import {AfterContentChecked, AfterViewInit, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {LoadingSpinnerComponent} from "./shared/loading-spinner/loading-spinner.component";
+import {AfterContentChecked, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {SpinnerService} from "./shared/loading-spinner/spinner.service";
-import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -10,17 +8,16 @@ import {Subject} from "rxjs";
 })
 export class AppComponent implements OnInit, AfterContentChecked {
   title = 'best-movies';
-  // isLoading = true;
-  // isLoading: Subject<boolean> = this.spinnerService.isLoading;
+  abs = false;
+
   constructor(public spinnerService: SpinnerService, private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit() {
-    // console.log(this.isLoading);
   }
 
   ngAfterContentChecked() {
     this.cdr.detectChanges();
-    }
   }
+}
 

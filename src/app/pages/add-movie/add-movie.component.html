@@ -29,7 +29,29 @@
     </div>
     <div class="row">
       <div class="input-field col s8">
-
+        <input
+          type="text"
+          class="validate"
+          [(ngModel)]="country"
+          name="country"
+          required
+          minlength="2"
+          id="country"
+          #countryI="ngModel"
+          (input)="printM(countryI)">
+        <label>Country</label>
+        <ng-container *ngIf="countryI.invalid && countryI.touched">
+          <div class="card-panel red darken-1 alert" *ngIf="countryI.errors.required">
+            Field required
+          </div>
+          <div class="card-panel red darken-1 alert" *ngIf="countryI.errors.minlength">
+            Text is to short
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s8">
         <select class="browser-default"
                 [(ngModel)]="year"
                 name="year"
@@ -53,7 +75,7 @@
 
         <select
           class="browser-default"
-          [(ngModel)]="country"
+          [(ngModel)]="category"
           name="country"
           required
           #categoryM="ngModel">
@@ -133,12 +155,14 @@
     <div class="row">
       <div class="input-field col s8">
         <input
-          type="number"
-          class="validate"
-          [(ngModel)]="imdbRating"
-          name="imdbRating"
-          required
-          #imdbRatingM="ngModel">
+          type="range"
+          min="0"
+          max="10"
+          value="5"
+          (input)="valueChanged($event)"
+          #imdbRatingM="ngModel"
+          [(ngModel)]="imdbRating">
+        {{ imdbRating }}
         <label>Imdb Rating</label>
         <ng-container *ngIf="imdbRatingM.invalid && imdbRatingM.touched">
           <div class="card-panel red darken-1 alert" *ngIf="imdbRatingM.errors.required">
@@ -154,6 +178,7 @@
         class="btn waves-effect waves-light light-green  button"
         type="submit"
         onclick="M.toast({html:'Added Movie'})"
+        [disabled]="movie.invalid"
       >Send
       </button>
       <button class="btn red" type="reset">Reset</button>
